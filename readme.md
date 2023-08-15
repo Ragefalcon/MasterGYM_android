@@ -2,9 +2,7 @@
 
 # MasterGYM for Android (alpha)
 
-<picture>
-  <img width="250px" alt="Logo" src="https://mastergym.online/MasterGYMIcon512.png">
-</picture>
+![Image](https://mastergym.online/MasterGYMIcon192.png)
 
 ![Static Badge](https://img.shields.io/badge/made_by-Ragefalcon-orange)
 
@@ -51,17 +49,17 @@
 
 ## Техонологии в проекте
 
-Проект написан на $\normalsize\textsf{\color{yellowgreen}Kotlin}$. Интерфейс реализован с помощью 
-$\normalsize\textsf{\color{yellowgreen}Jetpack Compose}$, 
-а взаимодействие с сервером осуществляется с помощью $\normalsize\textsf{\color{yellowgreen}Ktor}$.
-Сервер так же написан на $\normalsize\textsf{\color{yellowgreen}Kotlin}$ 
-с использованием $\normalsize\textsf{\color{yellowgreen}Spring}$ и 
-развернут на серверах Google в $\normalsize\textsf{\color{yellowgreen}AppEngine}$.
+Проект написан на $\normalsize\textsf{\color{orange}Kotlin}$. Интерфейс реализован с помощью 
+$\normalsize\textsf{\color{orange}Jetpack Compose}$, 
+а взаимодействие с сервером осуществляется с помощью $\normalsize\textsf{\color{orange}Ktor}$.
+Сервер так же написан на $\normalsize\textsf{\color{orange}Kotlin}$ 
+с использованием $\normalsize\textsf{\color{orange}Spring}$ и 
+развернут на серверах Google в $\normalsize\textsf{\color{orange}AppEngine}$.
 
-Для авторизации используется $\normalsize\textsf{\color{yellowgreen}Firebase Authentication}$, 
-а в качестве базы данных $\normalsize\textsf{\color{yellowgreen}Firestore}$.
+Для авторизации используется $\normalsize\textsf{\color{orange}Firebase Authentication}$, 
+а в качестве базы данных $\normalsize\textsf{\color{orange}Firestore}$.
 
-Видео с упражнениями располагаются в $\normalsize\textsf{\color{yellowgreen}CDN}$ bunny.net, что 
+Видео с упражнениями располагаются в $\normalsize\textsf{\color{orange}CDN}$ bunny.net, что 
 позволяет значительно ускорить загрузку.
 
 ## Запуск проекта из репозитория
