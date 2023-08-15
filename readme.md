@@ -38,10 +38,16 @@
 посмотреть и выполнить через эту Android версию. Так же здесь можно будет
 отредактировать данные профиля и сменить аватарку.
 
-<p>
-<img src="https://FitConstructorImg.b-cdn.net/other/open_training_demo.gif">
-<img style="padding-left: 40px" src="https://FitConstructorImg.b-cdn.net/other/change_avatar_demo.gif">
-</p>
+<table>
+  <tr>
+    <td>
+      <img src="https://FitConstructorImg.b-cdn.net/other/open_training_demo.gif" alt="Open Training Demo">
+    </td>
+    <td>
+      <img src="https://FitConstructorImg.b-cdn.net/other/change_avatar_demo.gif" alt="Change Avatar Demo">
+    </td>
+  </tr>
+</table>
 
 ## Техонологии в проекте
 
