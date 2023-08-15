@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MasterGYM</string>
+    <string name="auth_error_msg">auth_error_msg</string>
+    <string name="app_login_bottom">Перейти на сайт MasterGYM</string>
+    <string name="app_logo_desc">app_logo_desc</string>
+    <string name="app_logo">app_logo</string>
+
+    <string name="your_name">Ваше имя</string>
+    <string name="phone_number">Номер телефона</string>
+
+    <string name="label_butt_login">Войти/Зарегистрироваться</string>
+    <string name="label_butt_edit">Редактировать</string>
+    <string name="label_butt_exit">Выйти</string>
+    <string name="label_butt_change_avatar">Изменить аватар</string>
+    <string name="label_butt_cancel">Отмена</string>
+    <string name="label_butt_change">Изменить</string>
+    <string name="labal_butt_complete_training">Выполнить</string>
+    <string name="label_butt_back">Назад</string>
+
+    <string name="header_open_trainings">Открытые тренировки</string>
+    <string name="header_close_trainings">Прошедшие тренировки</string>
+    <string name="header_your_trainers">Ваши тренеры</string>
+    <string name="header_your_trainer">Ваш тренер</string>
+    <string name="header_archive_trainers">Архив тренеров</string>
+
+    <string name="toast_message_backpress_exit">Если хотите выйти, нажмите еще раз.</string>
+</resources>
