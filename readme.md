@@ -2,9 +2,7 @@
 
 # MasterGYM for Android (alpha)
 
-<picture>
-  <img width="250px" alt="Logo" src="https://mastergym.online/MasterGYMIcon512.png">
-</picture>
+![Image](https://mastergym.online/MasterGYMIcon192.png)
 
 ![Static Badge](https://img.shields.io/badge/made_by-Ragefalcon-orange)
 
@@ -41,27 +39,27 @@
 <table>
   <tr>
     <td>
-      <img src="https://FitConstructorImg.b-cdn.net/other/open_training_demo.gif" alt="Open Training Demo">
+      <img src="https://FitConstructorImg.b-cdn.net/other/change_avatar_demo.gif" alt="Change Avatar Demo">
     </td>
     <td>
-      <img src="https://FitConstructorImg.b-cdn.net/other/change_avatar_demo.gif" alt="Change Avatar Demo">
+      <img src="https://FitConstructorImg.b-cdn.net/other/open_training_demo_2.gif" alt="Change Avatar Demo">
     </td>
   </tr>
 </table>
 
 ## Техонологии в проекте
 
-Проект написан на <b style="color: yellowgreen" >Kotlin</b>. Интерфейс реализован с помощью 
-<b style="color: yellowgreen" >Jetpack Compose</b>, 
-а взаимодействие с сервером осуществляется с помощью <b style="color: yellowgreen" >Ktor</b>.
-Сервер так же написан на <b style="color: yellowgreen" >Kotlin</b> 
-с использованием <b style="color: yellowgreen" >Spring</b> и 
-развернут на серверах Google в <b style="color: yellowgreen" >AppEngine</b>.
+Проект написан на $\normalsize\textsf{\color{orange}Kotlin}$. Интерфейс реализован с помощью 
+$\normalsize\textsf{\color{orange}Jetpack Compose}$, 
+а взаимодействие с сервером осуществляется с помощью $\normalsize\textsf{\color{orange}Ktor}$.
+Сервер так же написан на $\normalsize\textsf{\color{orange}Kotlin}$ 
+с использованием $\normalsize\textsf{\color{orange}Spring}$ и 
+развернут на серверах Google в $\normalsize\textsf{\color{orange}AppEngine}$.
 
-Для авторизации используется <b style="color: yellowgreen" >Firebase Authentication</b>, 
-а в качестве базы данных <b style="color: yellowgreen" >Firestore</b>.
+Для авторизации используется $\normalsize\textsf{\color{orange}Firebase Authentication}$, 
+а в качестве базы данных $\normalsize\textsf{\color{orange}Firestore}$.
 
-Видео с упражнениями располагаются в <b style="color: yellowgreen" >CDN</b> bunny.net, что 
+Видео с упражнениями располагаются в $\normalsize\textsf{\color{orange}CDN}$ bunny.net, что 
 позволяет значительно ускорить загрузку.
 
 ## Запуск проекта из репозитория
