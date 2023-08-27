@@ -24,4 +24,14 @@
     <string name="header_archive_trainers">Архив тренеров</string>
 
     <string name="toast_message_backpress_exit">Если хотите выйти, нажмите еще раз.</string>
+    <string name="empty_message_open_training">У вас пока нет ни одной тренировки</string>
+    <string name="empty_message_old_training">У вас еще нет ни одной прошедшей тренировки.</string>
+    <string name="empty_message_open_trainers">Вы еще не записались на персональные тренировки ни к одному тренеру.
+    </string>
+    <string name="empty_message_old_trainers">В вашем архиве пока нет ни одного тренера.</string>
+    <string name="status_trainer_new">Заявка на рассмотрении</string>
+    <string name="status_trainer_rejected">Заявка отклонена</string>
+    <string name="status_trainer_canceled">Заявка отменена</string>
+    <string name="status_trainer_close">Клиент в архиве</string>
+    <string name="status_trainer_open">Заявка принята</string>
 </resources>

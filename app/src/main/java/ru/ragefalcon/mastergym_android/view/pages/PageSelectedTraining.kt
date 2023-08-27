@@ -1,5 +1,6 @@
 package ru.ragefalcon.mastergym_android.view.pages
 
+import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Indication
@@ -117,7 +118,7 @@ private fun ColumnScope.MainListAssignmentsWithOpis(
             Text(stringResource(R.string.label_butt_back))
         }
         Button(
-            {
+            onClick = {
                 enableCompleteButt = false
                 vm.viewModelScope.launch {
                     vm.func.client.setCompletedTrainingFirestore(training, getCurrentDateTimeUTC()).let {
@@ -139,6 +140,7 @@ private fun ColumnScope.MainListAssignmentsWithOpis(
     }
 }
 
+@SuppressLint("PrivateResource")
 @Composable
 private fun ItemAssignment(
     ind: Int, item: BaseAssignment, selection: SingleSelectionType<BaseAssignment>,

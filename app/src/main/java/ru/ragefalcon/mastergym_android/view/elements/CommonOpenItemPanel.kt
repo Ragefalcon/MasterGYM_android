@@ -36,7 +36,10 @@ class CommonOpenItemPanel<T : Any>(
      *
      * finishAnimation - является индикатором завершения анимации разворачивания элемента.
      * */
-    val openedItem: @Composable (itemMainOpen: T, startOpenAnimation: MutableState<Boolean>, selection: SingleSelectionType<T>, finishAnimation: State<Boolean>) -> Unit,
+    val openedItem: @Composable (
+        itemMainOpen: T, startOpenAnimation: MutableState<Boolean>,
+        selection: SingleSelectionType<T>, finishAnimation: State<Boolean>
+    ) -> Unit,
     /**
      * list - список основных элементов.
      *
@@ -64,7 +67,13 @@ class CommonOpenItemPanel<T : Any>(
      * lazyListState - необходимо передать во внутренний LazyColumn, без этого координаты для анимации будут
      * рассчитываться неверно.
      * */
-    val mainSpis: @Composable ColumnScope.(list: List<T>, modifierList: Modifier, selection: SingleSelectionType<T>, openSpis_Index_Item: (Int, T, Rect?) -> Unit, lazyListState: LazyListState) -> Unit
+    val mainSpis: @Composable ColumnScope.(
+        list: List<T>,
+        modifierList: Modifier,
+        selection: SingleSelectionType<T>,
+        openSpis_Index_Item: (Int, T, Rect?) -> Unit,
+        lazyListState: LazyListState
+    ) -> Unit
 ) {
 
     val rectListTree = mutableStateOf(Rect(Offset(0f, 0f), Size(0f, 0f)))
@@ -122,10 +131,13 @@ class CommonOpenItemPanel<T : Any>(
     private fun getTop() = rectListTree.value.top + offsetItem.value + elementRect.value.top
     private fun getStart() = rectListTree.value.left + elementRect.value.left
     private fun getEnd() =
-        rectParent.value.width - if (elementRect.value.size.width != 0f) (rectListTree.value.left + elementRect.value.right) else rectListTree.value.right
+        rectParent.value.width -
+                if (elementRect.value.size.width != 0f) (rectListTree.value.left + elementRect.value.right)
+                else rectListTree.value.right
 
     private fun getBottom() =
-        rectParent.value.height - rectListTree.value.top - offsetItem.value - (if (elementRect.value.size.width != 0f) elementRect.value.bottom else sizeItem.value.toFloat())
+        rectParent.value.height - rectListTree.value.top - offsetItem.value -
+                (if (elementRect.value.size.width != 0f) elementRect.value.bottom else sizeItem.value.toFloat())
 
     fun testFinishAnimation() {
         if (finishTop.value && finishStart.value && finishEnd.value && finishBottom.value) {

@@ -1,7 +1,9 @@
 package ru.ragefalcon.mastergym_android.view.items
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,7 +35,7 @@ fun CardTrainer(trainer: BaseClient) {
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.app_logo),
-            contentDescription = "avatar trainer",//stringResource(R.string.description),
+            contentDescription = "avatar trainer",
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .width(70.dp)
@@ -44,6 +46,23 @@ fun CardTrainer(trainer: BaseClient) {
             SubheaderText(trainer.name ?: "")
             trainer.email?.let { email -> CommonText(email, color = colorResource(R.color.fontCommonColor)) }
             trainer.phone?.let { phone -> CommonText(phone, color = colorResource(R.color.fontCommonColor)) }
+            trainer.status?.let { status ->
+                if (status != "open") when (status) {
+                    "new" -> stringResource(R.string.status_trainer_new)
+                    "rejected" -> stringResource(R.string.status_trainer_rejected)
+                    "canceled" -> stringResource(R.string.status_trainer_canceled)
+                    "close" -> stringResource(R.string.status_trainer_close)
+                    else -> stringResource(R.string.status_trainer_open)
+                }.let {
+                    CommonText(
+                        it,
+                        color = colorResource(R.color.fontCommonColor),
+                        modifier = Modifier
+                            .border(1.dp, colorResource(R.color.fontCommonColor),RoundedCornerShape(5.dp))
+                            .padding(10.dp,3.dp)
+                    )
+                }
+            }
         }
     }
 }

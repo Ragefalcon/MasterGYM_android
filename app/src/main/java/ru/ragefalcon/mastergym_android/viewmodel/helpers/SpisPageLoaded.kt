@@ -1,5 +1,6 @@
 package ru.ragefalcon.mastergym_android.viewmodel.helpers
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,6 +13,7 @@ import ru.ragefalcon.mastergym_android.viewmodel.MainViewModel
 
 class SpisPageLoaded<T>(
     sizePage: Int,
+    @StringRes val emptyMessage:  Int,
     private val vm: MainViewModel,
     private val request: suspend (Int,Int,(CommonPageList<T>) -> Unit) -> Unit
 ) {
@@ -35,21 +37,19 @@ class SpisPageLoaded<T>(
 
     fun setCurrPage(value: Int) {
         if (value < totalPage) {
-//            field = value
             skip = pageSize * value
             currentPage = value
         }
         vm.viewModelScope.launch {
             update()
         }
-//        currentPrivPage = value
     }
 
     var totalCount = 0
         get
         private set(value) {
             field = value
-            totalPage = if (pageSize != 0) {
+            totalPage = if (pageSize != 0 && value != 0) {
                 value / pageSize + if (value % pageSize > 0) 1 else 0
             } else 1
             if (totalPage <= currentPage) setCurrPage(0)
@@ -63,7 +63,9 @@ class SpisPageLoaded<T>(
             if (value != 0) {
                 if(value != field) {
                     field = value
-                    totalPage = totalCount / value + if (totalCount % value > 0) 1 else 0
+                    totalPage = if (totalCount != 0) {
+                        totalCount / value + if (totalCount % value > 0) 1 else 0
+                    } else 1
                     if (totalPage <= currentPage) setCurrPage(0)
                     limit = value
                 }

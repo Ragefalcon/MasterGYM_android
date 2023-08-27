@@ -18,6 +18,7 @@ import ru.ragefalcon.mastergym_android.R
 import ru.ragefalcon.mastergym_android.global.appConst
 import ru.ragefalcon.mastergym_android.view.LoaderComponent
 import ru.ragefalcon.mastergym_android.view.elements.HeaderText
+import ru.ragefalcon.mastergym_android.view.elements.SubheaderText
 import ru.ragefalcon.mastergym_android.view.elements.paginationElement
 import ru.ragefalcon.mastergym_android.view.items.CardCloseTraining
 import ru.ragefalcon.mastergym_android.view.items.CardTrainer
@@ -45,8 +46,10 @@ fun PageTrainings(vm: MainViewModel) {
                     .padding(horizontal = appConst.paddingCommon),
                 vm.archiveTrainer,
                 if (vm.date.listTrainersOpen.totalCount > 1) stringResource(R.string.header_your_trainers) else stringResource(
-                                    R.string.header_your_trainer),
-                stringResource(R.string.header_archive_trainers)
+                    R.string.header_your_trainer
+                ),
+                stringResource(R.string.header_archive_trainers),
+                vm.date.listTrainersClose.totalCount > 0
             ) {
                 vm.archiveTrainer = vm.archiveTrainer.not()
             }
@@ -62,7 +65,10 @@ fun PageTrainings(vm: MainViewModel) {
             CommonHeader(
                 Modifier
                     .padding(horizontal = appConst.paddingCommon),
-                vm.archiveTrainings, stringResource(R.string.header_open_trainings), stringResource(R.string.header_close_trainings)
+                vm.archiveTrainings,
+                stringResource(R.string.header_open_trainings),
+                stringResource(R.string.header_close_trainings),
+                vm.date.oldTrainingsForClient.totalCount > 0
             ) {
                 vm.archiveTrainings = vm.archiveTrainings.not()
             }
@@ -84,14 +90,14 @@ fun PageTrainings(vm: MainViewModel) {
 
 
 @Composable
-private fun CommonHeader(modifier: Modifier, archive: Boolean, text: String, textArchive: String, onClick: () -> Unit) {
+private fun CommonHeader(modifier: Modifier, archive: Boolean, text: String, textArchive: String, enableArchiveButt: Boolean, onClick: () -> Unit) {
     Row(modifier, verticalAlignment = Alignment.CenterVertically) {
         HeaderText(
             if (archive) textArchive else text,
             color = colorResource(R.color.myGreen),
             modifier = Modifier.weight(1f)
         )
-        Image(
+        if (enableArchiveButt) Image(
             painter = painterResource(if (archive) R.drawable.ic_archive_blue else R.drawable.ic_archive_gray),
             contentDescription = "Image from Internet",
             modifier = Modifier
@@ -113,23 +119,32 @@ private fun <T> LazyListScope.CommonItems(
     if (loadingProcess) item {
         LoaderComponent()
     } else {
-        itemsIndexed(trainers) { ind, item ->
-            if (ind != 0 && delimeter) Box(
-                Modifier
-                    .padding(horizontal = appConst.paddingCommon)
-//                    .padding(vertical = (appConst.paddingSmall - 1.dp) / 2)
-                    .height(1.dp)
-                    .fillMaxWidth()
-                    .background(colorResource(R.color.fontUnactiveColor))
-            )
-            card(item)
-        }
-        item {
-            paginationElement(
-                Modifier
-                    .padding(horizontal = appConst.paddingCommon),
-                spisPage
-            )
+        if (trainers.isNotEmpty()) {
+            itemsIndexed(trainers) { ind, item ->
+                if (ind != 0 && delimeter) Box(
+                    Modifier
+                        .padding(horizontal = appConst.paddingCommon)
+                        .height(1.dp)
+                        .fillMaxWidth()
+                        .background(colorResource(R.color.fontUnactiveColor))
+                )
+                card(item)
+            }
+            item {
+                paginationElement(
+                    Modifier
+                        .padding(horizontal = appConst.paddingCommon),
+                    spisPage
+                )
+            }
+        } else {
+            item {
+                SubheaderText(
+                    stringResource(spisPage.emptyMessage),
+                    Modifier.padding(horizontal = appConst.paddingCommon),
+                    color = colorResource(R.color.fontCommonColor)
+                )
+            }
         }
     }
 }

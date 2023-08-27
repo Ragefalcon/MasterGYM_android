@@ -23,7 +23,7 @@
 представлен на этой страничке, чтобы посмотреть как выглядят 
 онлайн-тренировки в нашем проекте.
 
-<h2><a  href="https://FitConstructorImg.b-cdn.net/other/File%20for%20download/MasterGYM.apk" download>
+<h2><a  href="https://FitConstructorImg.b-cdn.net/other/File%20for%20download/MasterGYM_1b.apk" download>
 Установочный APK
 </a></h2>
 Для установки ознакомительной версии нужно будет разрешить установку приложений из

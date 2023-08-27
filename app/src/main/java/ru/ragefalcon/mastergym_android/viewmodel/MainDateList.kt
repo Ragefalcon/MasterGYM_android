@@ -1,11 +1,12 @@
 package ru.ragefalcon.mastergym_android.viewmodel
 
+import android.util.Log
 import bdElement.BaseClient
 import bdElement.BaseTraining
 import bdElement.CommonPageList
 import bdElement.ParamCommonSpisRequest
-import io.ktor.util.*
 import kotlinx.serialization.encodeToString
+import ru.ragefalcon.mastergym_android.R
 import ru.ragefalcon.mastergym_android.global.myJson
 import ru.ragefalcon.mastergym_android.viewmodel.helpers.SpisPageLoaded
 import ru.ragefalcon.mastergym_android.viewmodel.helpers.commonUserPostJsonRequest
@@ -15,7 +16,12 @@ class MainDateList(vm: MainViewModel) {
     /**
      * Тренировки которые в данный момент доступны клиенту для выполнения.
      * */
-    val openTrainingsForClient = SpisPageLoaded<BaseTraining>(6, vm) { limit, skip, load ->
+    val openTrainingsForClient = SpisPageLoaded<BaseTraining>(
+        6,
+        R.string.empty_message_open_training,
+        vm
+    ) { limit, skip, load ->
+        Log.d("MyTag", "Load request for open training")
         vm.userProfile.value?.id?.let { profileId ->
             commonUserPostJsonRequest(
                 vm = vm,
@@ -25,7 +31,9 @@ class MainDateList(vm: MainViewModel) {
                     append("clientId", profileId)
                 }
             ).let { userStr ->
+                Log.d("MyTag", userStr)
                 parseMyResponse<List<BaseTraining>>(userStr).run {
+                    Log.d("MyTag", "parseMyResponse: $this")
                     if (checkStatusOK()) load(CommonPageList(objectResponse, totalCount))
                 }
             }
@@ -35,7 +43,9 @@ class MainDateList(vm: MainViewModel) {
     /**
      * Тренировки которые в данный момент УЖЕ не доступны клиенту для выполнения.
      * */
-    val oldTrainingsForClient = SpisPageLoaded<BaseTraining>(12, vm) { limit, skip, load ->
+    val oldTrainingsForClient = SpisPageLoaded<BaseTraining>(12,
+        R.string.empty_message_old_training,
+        vm) { limit, skip, load ->
         vm.userProfile.value?.id?.let { profileId ->
             commonUserPostJsonRequest(
                 vm = vm,
@@ -55,7 +65,9 @@ class MainDateList(vm: MainViewModel) {
     /**
      * Список тренеров у клиента.
      * */
-    val listTrainersOpen = SpisPageLoaded<BaseClient>(0,vm) { limit, skip, load ->
+    val listTrainersOpen = SpisPageLoaded<BaseClient>(0,
+        R.string.empty_message_open_trainers,
+        vm) { limit, skip, load ->
         vm.userProfile.value?.id?.let { profileId ->
             commonUserPostJsonRequest(
                 vm = vm,
@@ -71,7 +83,12 @@ class MainDateList(vm: MainViewModel) {
                      * Кусок с фильтрацией ?.filter { it.status == "new" || it.status == "open" }
                      * нужен для правильной работы на старой версии сервера, после обновления сервера это не понадобится.
                      * */
-                    if (checkStatusOK()) load(CommonPageList(objectResponse?.filter { it.status == "new" || it.status == "open" }, totalCount))
+                    if (checkStatusOK()) load(
+                        CommonPageList(
+                            objectResponse?.filter { it.status == "new" || it.status == "open" },
+                            totalCount
+                        )
+                    )
                 }
             }
         }
@@ -80,7 +97,9 @@ class MainDateList(vm: MainViewModel) {
     /**
      * Список бывших или отказавших тренеров у клиента.
      * */
-    val listTrainersClose = SpisPageLoaded<BaseClient>(0,vm) { limit, skip, load ->
+    val listTrainersClose = SpisPageLoaded<BaseClient>(0,
+        R.string.empty_message_old_trainers,
+        vm) { limit, skip, load ->
         vm.userProfile.value?.id?.let { profileId ->
             commonUserPostJsonRequest(
                 vm = vm,
@@ -96,10 +115,14 @@ class MainDateList(vm: MainViewModel) {
                      * Кусок с фильтрацией ?.filter { it.status != "new" && it.status != "open" }
                      * нужен для правильной работы на старой версии сервера, после обновления сервера это не понадобится.
                      * */
-                    if (checkStatusOK()) load(CommonPageList(objectResponse?.filter { it.status != "new" && it.status != "open" }, totalCount))
+                    if (checkStatusOK()) load(
+                        CommonPageList(
+                            objectResponse?.filter { it.status != "new" && it.status != "open" },
+                            totalCount
+                        )
+                    )
                 }
             }
         }
     }
-
 }
