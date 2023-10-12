@@ -1,7 +1,6 @@
 package ru.ragefalcon.mastergym_android.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -34,16 +33,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setCurrUser(newUser: FirebaseUser?) {
         _currentUser.value = newUser
-        Log.d("myTag", "setCurrentUser")
         viewModelScope.launch {
-            Log.d("myTag", "startRequest.getUserProfile()_1")
             _userProfile.value = func.startRequest.getUserProfile()
-            Log.d("myTag", "startRequest.getUserProfile()_2")
             date.openTrainingsForClient.update()
             date.oldTrainingsForClient.update()
             date.listTrainersOpen.update()
             date.listTrainersClose.update()
-            Log.d("myTag", "startRequest.getUserProfile()_3")
         }
     }
 

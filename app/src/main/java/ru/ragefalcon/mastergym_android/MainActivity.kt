@@ -39,7 +39,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -55,8 +54,6 @@ import ru.ragefalcon.mastergym_android.viewmodel.MainViewModel
 class MainActivity : ComponentActivity() {
 
     val vm by viewModels<MainViewModel>()
-
-    private lateinit var auth: FirebaseAuth
 
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract(),
@@ -82,10 +79,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        FirebaseApp.initializeApp(this)
-
-        auth = Firebase.auth
-        val currentUser = auth.currentUser
+        val currentUser = Firebase.auth.currentUser
         currentUser?.let {
             vm.setCurrUser(it)
         }

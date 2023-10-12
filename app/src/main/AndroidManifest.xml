@@ -23,7 +23,6 @@
                 android:exported="true"
                 android:theme="@style/SplashScreenTheme"
         >
-<!--                android:theme="@style/Theme.MasterGYM_android">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
